@@ -43,7 +43,7 @@ const FUTURE_SEGWIT_VERSION_WARNING: string =
   'End users MUST be warned carefully in the GUI and asked if they wish to proceed ' +
   'with caution. Wallets should verify the segwit version from the output of fromBech32, ' +
   'then decide when it is safe to use which version of segwit.';
-let WARNING_STATES: boolean[] = [false, false];
+const WARNING_STATES: boolean[] = [false, false];
 
 function _toFutureSegwitAddress(output: Buffer, network: Network): string {
   const data = output.slice(2);
