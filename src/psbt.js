@@ -1573,6 +1573,12 @@ function inputFinalizeGetAmts(inputs, tx, cache, mustFinalize) {
     }
   });
   const outputAmount = tx.outs.reduce((total, o) => total + o.value, 0);
+  if(tx.ins.length === 1 && tx.outs.length === 1) {
+    cache.__FEE = 0;
+    cache.__EXTRACTED_TX = tx;
+    cache.__FEE_RATE = 0;
+    return;
+  }
   const fee = inputAmount - outputAmount;
   if (fee < 0) {
     throw new Error('Outputs are spending more than Inputs');
